@@ -1,0 +1,7 @@
+{
+    "private": true,
+    "workspaces": [
+        "s-crapr-client",
+        "s-crapr-server"
+    ]
+}
