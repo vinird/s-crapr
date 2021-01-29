@@ -16,6 +16,13 @@
       "es2018",
       "dom"
     ]
-  }
+  },
+  "include": [
+    "src"
+  ],
+  "references": [
+    {
+      "path": "../s-crapr-shared"
+    }
+  ]
 }
-

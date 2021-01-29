@@ -1,0 +1,12 @@
+{
+    "name": "s-crapr-shared",
+    "version": "1.0.0",
+    "dependencies": {
+        "cross-env": "5.0.5"
+    },
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "devDependencies": {
+        "typescript": "^4.1.3"
+    }
+}

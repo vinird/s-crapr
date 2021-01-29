@@ -9,8 +9,17 @@
     "allowSyntheticDefaultImports": true,
     "target": "es2017",
     "sourceMap": true,
+    "rootDir": "src",
     "outDir": "./dist",
     "baseUrl": "./",
     "incremental": true
-  }
+  },
+  "include": [
+    "src",
+  ],
+  "references": [
+    {
+      "path": "../s-crapr-shared"
+    }
+  ]
 }
