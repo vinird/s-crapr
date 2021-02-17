@@ -1,10 +1,9 @@
-export interface Job {
+export interface AppLog {
     UUID: string,
     id: string,
     createdAt: Date,
     updatedAt: Date,
     userId: string,
-    scrapperId: string,
-    schedule: string,
-    enabled: boolean
+    level: 'info' | 'warn' | 'error',
+    message: string,
 }
