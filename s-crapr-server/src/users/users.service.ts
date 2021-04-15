@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { QueryRunner, Repository } from 'typeorm';
 import { User } from './users.entity';
-import { hash } from 'bcrypt';
+import { hash, compare } from 'bcrypt';
 
 
 // This should be a real class/interface representing a user entity
@@ -15,22 +15,8 @@ export class UsersService {
         private userRepository: Repository<User>,
     ) { }
 
-    private readonly users = [
-        {
-            userId: 1,
-            username: 'john',
-            password: 'changeme',
-        },
-        {
-            userId: 2,
-            username: 'maria',
-            password: 'guess',
-        },
-    ];
-
-    // TODO: use actual ORM
     async findOne(username: string): Promise<any> {
-        return this.users.find(user => user.username === username);
+        return await this.userRepository.findOne({ username: username });
     }
 
     async findOneByEmail(email: string): Promise<any> {

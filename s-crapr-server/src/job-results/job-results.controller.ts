@@ -4,7 +4,7 @@ import { JobResult } from './job-result.entity';
 
 @Controller('job-result')
 export class JobResultsController {
-    constructor(private service: JobResultsService){}
+    constructor(private service: JobResultsService) { }
 
     @Get()
     findAll(): Promise<void | JobResult[]> {
@@ -16,9 +16,14 @@ export class JobResultsController {
         return this.service.findOne(id);
     }
 
+    @Get('job/:id')
+    findByJobId(@Param('id') id: string): Promise<JobResult[]> {
+        return this.service.findOneByJobId(id);
+    }
+
     @Post()
-    create(@Body() job: JobResult): Promise<JobResult> {
-        return this.service.create(job);
+    create(@Body() job: JobResult) {
+        // return this.service.create(job);
     }
 
     @Put(':id')
@@ -27,7 +32,7 @@ export class JobResultsController {
     }
 
     @Delete(':id')
-    remove(@Param('id') id: string) : Promise<JobResult | void> {
+    remove(@Param('id') id: string): Promise<JobResult | void> {
         return this.service.remove(id);
     }
 }

@@ -1,0 +1,115 @@
+<!-- component -->
+<div class="grid grid-cols-2">
+  <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col" [formGroup]="scrapperForm"
+    (ngSubmit)="onSubmit()">
+    <h2 class="uppercase tracking-wide text-grey-darker font-bold mb-10 mt-4">Scrapper details</h2>
+    <div class="-mx-3 md:flex mb-6">
+      <div class="md:w-1/2 px-3 mb-6 md:mb-0">
+        <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="scrapper-id">
+          ID
+        </label>
+        <input
+          class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-red rounded py-3 px-4 mb-3"
+          id="scrapper-id" type="text" formControlName="id" readonly>
+      </div>
+    </div>
+    <div class="-mx-2 md:flex mb-12">
+      <div class="md:w-full px-3">
+        <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="scrapper-url">
+          URL
+        </label>
+        <input
+          class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4"
+          id="scrapper-url" type="text" placeholder="Doe" formControlName="url">
+        <p class="text-red text-xs italic">Please fill out this field.</p>
+      </div>
+    </div>
+    <div class="-mx-3 md:flex mb-6">
+      <div class="md:w-full px-3">
+        <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2"
+          for="scrapper-css-selector">
+          CSS Selector
+        </label>
+        <textarea
+          class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4 mb-3"
+          id="scrapper-css-selector" placeholder=".my-class" formControlName="cssSelector"></textarea>
+        <p class="text-grey-dark text-xs italic">Make it as long and as crazy as you'd like</p>
+      </div>
+    </div>
+    <div class="-mx-3 md:flex mb-6">
+      <div class="md:w-1/2 px-3">
+        <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2"
+          for="scrapper-output-format">
+          Output Format
+        </label>
+        <div class="relative">
+          <select
+            class="block appearance-none w-full bg-grey-lighter border border-grey-lighter text-grey-darker py-3 px-4 pr-8 rounded"
+            id="scrapper-output-format" formControlName="outputFormat">
+            <option value="text">Text</option>
+            <option value="raw">Raw HTML</option>
+            <option value="json">Json</option>
+          </select>
+        <p class="text-red text-xs italic">Please select one option.</p>
+        </div>
+      </div>
+    </div>
+
+    <hr class="mb-8 mt-4">
+
+    <button type="submit" value="Submit" [disabled]="!scrapperForm.valid || savingScrapper" [ngClass]="{'hover:bg-green-700 hover:text-white border-green-500 text-green-500':scrapperForm.valid}"
+      class="px-5 py-2 border rounded transition duration-300 focus:outline-none text-center">
+      {{ savingScrapper ? 'Saving...' : 'Save' }}
+    </button>
+
+  </form>
+
+  <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col" [formGroup]="scrapperFormOutput">
+    <div class="-mx-3 md:flex mb-6">
+      <div class="md:w-1/2 px-3 mb-6 md:mb-0">
+        <button (click)="run()" [disabled]="runningScrapper"
+          class="px-5 py-2 border-blue-500 border text-blue-500 rounded transition duration-300 hover:bg-blue-700 hover:text-white focus:outline-none">
+          {{ runningScrapper ? 'Running...' : 'Run' }}
+        </button>
+      </div>
+    </div>
+    <div class="-mx-3 md:flex mb-6">
+      <div class="md:w-full px-3">
+        <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2"
+          for="scrapper-output-result">
+          Output
+        </label>
+        <textarea
+          class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4 mb-3"
+          rows="10" id="scrapper-output-result" placeholder="Data..." formControlName="result" readonly></textarea>
+        <p class="text-grey-dark text-xs italic">Here you will see the result of running the scrapper.</p>
+      </div>
+    </div>
+    <div class="-mx-3 md:flex mb-6">
+      <div class="md:w-1/2 px-3 mb-6 md:mb-0">
+        <button (click)="renderOutput()" *ngIf="scrapperForm.get('outputFormat').value == 'raw'"
+          class="px-5 py-2 border-blue-500 border text-blue-500 rounded transition duration-300 hover:bg-blue-700 hover:text-white focus:outline-none">
+          Render Output
+        </button>
+      </div>
+    </div>
+    <div class="-mx-3 md:flex mb-6" *ngIf="scrapperForm.get('outputFormat').value == 'raw' && rawOutputVisible">
+      <div class="md:w-1/2 px-3 mb-6 md:mb-0">
+        <div class="text-grey-darker border border-grey-lighter rounded py-3 px-4 mb-3"
+          [innerHTML]="scrapperFormOutput.get('result').value"></div>
+      </div>
+    </div>
+    <div class="-mx-3 md:flex mb-6">
+      <div class="md:w-full px-3">
+        <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2"
+          for="scrapper-output-console">
+          Console
+        </label>
+        <textarea
+          class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4 mb-3"
+          rows="6" id="scrapper-output-console" placeholder="Success..." formControlName="console" readonly></textarea>
+        <p class="text-grey-dark text-xs italic">Any output from the server will be shown here.</p>
+      </div>
+    </div>
+  </form>
+</div>

@@ -1,6 +1,7 @@
 export interface User {
     UUID: string,
     id: string,
+    token: string,
     createdAt: Date,
     updatedAt: Date,
     email: string,

@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+
+import { JobsService } from '../../../../services/jobs/jobs.service'
 
 @Component({
   selector: 'app-jobs',
@@ -7,9 +10,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class JobsComponent implements OnInit {
 
-  constructor() { }
+  jobs$: Observable<object>;
+
+  constructor(private service: JobsService) { }
 
   ngOnInit(): void {
+    this.jobs$ = this.service.findAll();
   }
 
 }

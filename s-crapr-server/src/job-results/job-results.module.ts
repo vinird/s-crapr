@@ -11,12 +11,14 @@ import { JobResultsService } from "./job-results.service";
 
 // Entities
 import { JobResult } from "./job-result.entity";
+import { Scrapper } from "../scrappers/scrapper.entity";
 
 
 @Module({
     imports: [
         TypeOrmModule.forFeature([
-            JobResult
+            JobResult,
+            Scrapper
         ]),
     ],
     controllers: [

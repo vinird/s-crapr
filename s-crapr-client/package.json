@@ -11,7 +11,6 @@
   },
   "private": true,
   "dependencies": {
-    "s-crapr-shared": "1.0.0",
     "@angular/animations": "~11.0.9",
     "@angular/common": "~11.0.9",
     "@angular/compiler": "~11.0.9",
@@ -20,8 +19,13 @@
     "@angular/platform-browser": "~11.0.9",
     "@angular/platform-browser-dynamic": "~11.0.9",
     "@angular/router": "~11.0.9",
+    "@bit/valor-software.ngx-bootstrap.modal": "^5.1.1",
     "ngx-build-plus": "^11.0.0",
+    "ngx-mask": "^11.1.4",
+    "ngx-progressbar": "^6.1.0",
     "rxjs": "~6.6.0",
+    "s-crapr-shared": "1.0.0",
+    "ts-md5": "^1.2.7",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"
   },

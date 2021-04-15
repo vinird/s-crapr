@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { ScrappersService } from '../../../../services/scrappers/scrappers.service'
 
 @Component({
   selector: 'app-scrappers',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ScrappersComponent implements OnInit {
 
-  constructor() { }
+  scrappers$: Observable<Object>;
+
+  constructor(private service: ScrappersService) { }
 
   ngOnInit(): void {
+    this.scrappers$ = this.service.findAll();
   }
 
 }

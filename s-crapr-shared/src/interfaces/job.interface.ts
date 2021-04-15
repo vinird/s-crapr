@@ -5,6 +5,11 @@ export interface Job {
     updatedAt: Date,
     userId: string,
     scrapperId: string,
-    schedule: string,
+    minute: string;
+    hour: string;
+    dayOfMonth: string;
+    month: string;
+    dayOfWeek: string;
     enabled: boolean
+    description: string
 }

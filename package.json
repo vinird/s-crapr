@@ -1,5 +1,11 @@
 {
     "private": true,
+    "scripts": {
+        "start:server": "cd s-crapr-server && yarn start",
+        "start:server:dev": "cd s-crapr-server && yarn start:dev",
+        "start:client": "cd s-crapr-client && yarn start",
+        "check:server-port": "lsof -i tcp:3000"
+    },
     "workspaces": [
         "s-crapr-shared",
         "s-crapr-client",

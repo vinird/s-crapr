@@ -1,8 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
 
+@import "tailwindcss/base";
 
-@import 'tailwindcss/base';
+@import "tailwindcss/components";
 
-@import 'tailwindcss/components';
+@import "tailwindcss/utilities";
 
-@import 'tailwindcss/utilities';
+/*
+* Global styles
+*/
+.ng-touched.ng-invalid {
+  border-color: red;
+}
